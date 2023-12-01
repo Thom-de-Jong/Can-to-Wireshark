@@ -6,6 +6,13 @@ On windows, users are expected to use the software provided by the manufacturer 
 
 This script can be run on windows in order to pipe the CAN messages into Wireshark.
 
+## Installation
+- Install [python](https://www.python.org/downloads/) version >= 3.12.0
+- Install [python-can](https://python-can.readthedocs.io/en/stable/installation.html)
+- Install the required interface drivers
+    - "pip install python-can[pcan]" for PCAN
+    - "pip install python-can[gs_usb]" for Canable
+
 ## Usage
 Implemented interfaces are: "pcan", "canable"
 
