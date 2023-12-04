@@ -36,4 +36,30 @@ python ./Can-to-Wireshark.py -i pcan -c PCAN_USBBUS1 -b 250000
 
 ## ToDo
 Implement and test all other interfaces provided by python-can.
-If you want to contribure, you are free to open a pull request.
+If you want to contribure, feel free to open a pull request.
+
+- [x] Implement 'pcan'
+- [x] Implement 'gs_usb'
+- [x] Implement 'serial'
+- [ ] Implement 'canalystii'
+- [ ] Implement 'canine'
+- [ ] Implement 'cantact'
+- [ ] Implement 'cvector'
+- [ ] Implement 'neovi'
+- [ ] Implement 'nixnet'
+- [ ] Implement 'remote'
+- [ ] Implement 'seeedstudio'
+- [ ] Implement 'sontheim'
+\
+- [x] Test with hardware 'pcan'
+- [x] Test with hardware 'gs_usb'
+- [ ] Test with hardware 'canalystii'
+- [ ] Test with hardware 'canine'
+- [ ] Test with hardware 'cantact'
+- [ ] Test with hardware 'cvector'
+- [ ] Test with hardware 'neovi'
+- [ ] Test with hardware 'nixnet'
+- [ ] Test with hardware 'remote'
+- [ ] Test with hardware 'seeedstudio'
+- [ ] Test with hardware 'serial'
+- [ ] Test with hardware 'sontheim'

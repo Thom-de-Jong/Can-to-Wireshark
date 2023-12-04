@@ -50,7 +50,6 @@ class PipedReader(can.Listener):
         )
         try:
             win32file.WriteFile(self.pipe, packet_header)
-            # Header is immediately followed by corresponding packet data = msg
             win32file.WriteFile(self.pipe, socketcan_frame)
         except Exception:
             pass
@@ -66,19 +65,28 @@ def main():
     options = parser.parse_args()
 
     bus = None
-    print('Current options: ', options)
 
-    match (options.interface):
-        case 'pcan':
-            bus = can.Bus(interface="pcan", channel=options.channel, bitrate=options.baudrate)
-        case 'canable':
-            if options.channel == None:
-                options.channel = "canable gs_usb"
-            bus = can.Bus(interface="gs_usb", channel=options.channel, index=0, bitrate=options.baudrate)
-        case other:
-            print('Unknown interface specified:', options.interface)
-            print('Known interface are: pcan, canable')
-            exit(1)
+    if options.verbose:
+        print('Current options: ', options)
+
+    try:
+        match (options.interface):
+            case 'pcan':
+                bus = can.Bus(interface="pcan", channel=options.channel, bitrate=options.baudrate)
+            case 'canable':
+                if options.channel == None:
+                    options.channel = "canable gs_usb"
+                bus = can.Bus(interface="gs_usb", channel=options.channel, index=0, bitrate=options.baudrate)
+            case 'slcan': # Not tested
+                if options.channel == None:
+                    options.channel = "COM0"
+                bus = can.Bus(interface="slcan", channel=options.channel, bitrate=options.baudrate)
+            case other:
+                print('Unknown interface specified:', options.interface)
+                print('Known interface are: pcan, canable, slcan')
+    except Exception:
+        print('Could not open CAN interface:', options.interface)
+        exit(1)
 
     # Create the named pipe \\.\pipe\CAN
     CAN_pipe = win32pipe.CreateNamedPipe(
