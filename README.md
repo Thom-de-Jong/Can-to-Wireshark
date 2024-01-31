@@ -36,7 +36,7 @@ options:
 ```
 python ./Can-to-Wireshark.py
 ```
-I the same as
+Is the same as
 ```
 python ./Can-to-Wireshark.py -i pcan -c PCAN_USBBUS1 -b 250000
 ```
